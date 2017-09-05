@@ -31,8 +31,6 @@ void do_sort()
 	std::sort(numbers.begin(), numbers.end());
 
 	output_numbers(DATE_EXCHANGE_FILENAME, numbers);
-
-	remove_token();
 }
 
 int main()
@@ -45,6 +43,8 @@ int main()
 			break;
 		}
 		do_sort();
+
+		remove_token();
 	}
 	return 0;
 }
