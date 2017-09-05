@@ -14,7 +14,6 @@ void do_sort()
 		if (access(TOKEN_FILENAME, F_OK) != -1)
 			break;
 	}
-	printf("Got token\n");
 
 	std::fstream sorted_file(DATE_EXCHANGE_FILENAME, std::fstream::in);
 	numbers_t numbers;
@@ -25,7 +24,6 @@ void do_sort()
 	}
 	sorted_file.close();
 
-	printf("Got %lu numbers\n", numbers.size());
 
 	std::sort(numbers.begin(), numbers.end());
 
