@@ -36,9 +36,9 @@ int main()
 
 	wait_for_token_disapper();
 
-	std::fstream soorted_file(DATE_EXCHANGE_FILENAME, std::fstream::in);
+	std::fstream sorted_file(DATE_EXCHANGE_FILENAME, std::fstream::in);
 	int number;
-	while (soorted_file >> number)
+	while (sorted_file >> number)
 	{
 		cout << number << " ";
 	}
