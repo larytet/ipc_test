@@ -9,14 +9,14 @@ using namespace std;
 
 bool shall_exit()
 {
-	return access(EXIT_FILENAME, F_OK) != -1;
+	return file_exists(EXIT_FILENAME);
 }
 
 void wait_for_token()
 {
 	while (true)
 	{
-		if (access(TOKEN_FILENAME, F_OK) != -1)
+		if (token_exists())
 			break;
 		if (shall_exit())
 			break;
@@ -36,7 +36,7 @@ void do_sort()
 
 	output_numbers(DATE_EXCHANGE_FILENAME, numbers);
 
-	std::remove(TOKEN_FILENAME);
+	remove_token();
 }
 
 int main()

@@ -1,7 +1,9 @@
+#include <cstdio>
+
 #include "common.hpp"
 
 
-const char *TOKEN_FILENAME = "token.txt";
+static const char *TOKEN_FILENAME = "token.txt";
 const char *DATE_EXCHANGE_FILENAME = "data_exchange.txt";
 const char *DATE_INPUT_FILENAME = "data.txt";
 const char *EXIT_FILENAME = "exit.txt";
@@ -28,3 +30,24 @@ void read_numbers(const char* filename, numbers_t &numbers)
 	input_file.close();
 }
 
+
+void remove_token()
+{
+	std::remove(TOKEN_FILENAME);
+}
+
+void create_token()
+{
+	std::fstream token_file(TOKEN_FILENAME, std::fstream::out);
+	token_file.close();
+}
+
+bool token_exists()
+{
+	return file_exists(TOKEN_FILENAME);
+}
+
+bool file_exists(const char *filename)
+{
+	return (access(filename, F_OK) != -1);
+}

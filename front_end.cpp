@@ -9,21 +9,15 @@ void wait_for_token_disapper()
 {
 	while (true)
 	{
-		if (access(TOKEN_FILENAME, F_OK) == -1)
+		if (!token_exists())
 			break;
 	}
 }
 
-void create_token()
-{
-	std::fstream token_file(TOKEN_FILENAME, std::fstream::out);
-	token_file << "done\n";
-	token_file.close();
-}
 
 int main()
 {
-	std::remove(TOKEN_FILENAME);
+	remove_token();
 	std::remove(DATE_EXCHANGE_FILENAME);
 
 	numbers_t numbers;
