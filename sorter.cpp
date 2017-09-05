@@ -7,32 +7,26 @@
 
 using namespace std;
 
-void do_sort()
+void wait_for_token()
 {
 	while (true)
 	{
 		if (access(TOKEN_FILENAME, F_OK) != -1)
 			break;
 	}
+}
 
-	std::fstream sorted_file(DATE_EXCHANGE_FILENAME, std::fstream::in);
+void do_sort()
+{
+	wait_for_token();
+
 	numbers_t numbers;
-	int number;
-	while (sorted_file >> number)
-	{
-		numbers.push_back(number);
-	}
-	sorted_file.close();
+	read_numbers(DATE_EXCHANGE_FILENAME, numbers);
 
 
 	std::sort(numbers.begin(), numbers.end());
 
-	std::fstream output_file(DATE_EXCHANGE_FILENAME, std::fstream::out);
-	for (int number : numbers)
-	{
-		output_file << number << " ";
-	}
-	output_file.close();
+	output_numbers(DATE_EXCHANGE_FILENAME, numbers);
 
 	std::remove(TOKEN_FILENAME);
 }
