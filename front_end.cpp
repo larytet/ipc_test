@@ -15,6 +15,13 @@ void wait_for_token_disapper()
 	}
 }
 
+void create_token()
+{
+	std::fstream token_file(TOKEN_FILENAME, std::fstream::out);
+	token_file << "done\n";
+	token_file.close();
+}
+
 int main()
 {
 	std::remove(TOKEN_FILENAME);
@@ -26,8 +33,7 @@ int main()
 
 	output_numbers(DATE_EXCHANGE_FILENAME, numbers);
 
-	std::fstream token_file(TOKEN_FILENAME, std::fstream::out);
-	token_file << "done\n";
+	create_token();
 
 	wait_for_token_disapper();
 
