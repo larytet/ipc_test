@@ -4,6 +4,7 @@
 const char *TOKEN_FILENAME = "token.txt";
 const char *DATE_EXCHANGE_FILENAME = "data_exchange.txt";
 const char *DATE_INPUT_FILENAME = "data.txt";
+const char *EXIT_FILENAME = "exit.txt";
 
 void output_numbers(const char* filename, const numbers_t &numbers)
 {

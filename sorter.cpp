@@ -13,12 +13,16 @@ void wait_for_token()
 	{
 		if (access(TOKEN_FILENAME, F_OK) != -1)
 			break;
+		if (access(EXIT_FILENAME, F_OK) != -1)
+			break;
 	}
 }
 
 void do_sort()
 {
 	wait_for_token();
+	if (access(EXIT_FILENAME, F_OK) != -1)
+		return;
 
 	numbers_t numbers;
 	read_numbers(DATE_EXCHANGE_FILENAME, numbers);
@@ -32,8 +36,15 @@ void do_sort()
 
 int main()
 {
+	std::remove(EXIT_FILENAME);
 	while (true)
 	{
+		if (access(EXIT_FILENAME, F_OK) != -1)
+		{
+			std::remove(EXIT_FILENAME);
+			break;
+		}
 		do_sort();
 	}
+	return 0;
 }
