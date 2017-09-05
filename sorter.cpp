@@ -7,13 +7,18 @@
 
 using namespace std;
 
+bool shall_exit()
+{
+	return access(EXIT_FILENAME, F_OK) != -1;
+}
+
 void wait_for_token()
 {
 	while (true)
 	{
 		if (access(TOKEN_FILENAME, F_OK) != -1)
 			break;
-		if (access(EXIT_FILENAME, F_OK) != -1)
+		if (shall_exit())
 			break;
 	}
 }
@@ -21,7 +26,7 @@ void wait_for_token()
 void do_sort()
 {
 	wait_for_token();
-	if (access(EXIT_FILENAME, F_OK) != -1)
+	if (shall_exit())
 		return;
 
 	numbers_t numbers;
@@ -39,9 +44,8 @@ int main()
 	std::remove(EXIT_FILENAME);
 	while (true)
 	{
-		if (access(EXIT_FILENAME, F_OK) != -1)
+		if (shall_exit())
 		{
-			std::remove(EXIT_FILENAME);
 			break;
 		}
 		do_sort();
