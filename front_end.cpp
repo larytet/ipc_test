@@ -7,10 +7,8 @@ using namespace std;
 
 void wait_for_token_disapper()
 {
-	while (true)
+	while (token_exists())
 	{
-		if (!token_exists())
-			break;
 	}
 }
 

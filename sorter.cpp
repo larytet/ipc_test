@@ -12,23 +12,19 @@ bool shall_exit()
 	return file_exists(EXIT_FILENAME);
 }
 
-void wait_for_token()
+bool wait_for_token()
 {
 	while (true)
 	{
 		if (token_exists())
-			break;
+			return true;
 		if (shall_exit())
-			break;
+			return false;
 	}
 }
 
 void do_sort()
 {
-	wait_for_token();
-	if (shall_exit())
-		return;
-
 	numbers_t numbers;
 	read_numbers(DATE_EXCHANGE_FILENAME, numbers);
 
@@ -44,7 +40,7 @@ int main()
 	std::remove(EXIT_FILENAME);
 	while (true)
 	{
-		if (shall_exit())
+		if (!wait_for_token())
 		{
 			break;
 		}
