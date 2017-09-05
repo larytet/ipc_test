@@ -41,5 +41,6 @@ int main()
 	{
 		cout << number << " ";
 	}
+	cout << std::endl;
 
 }
