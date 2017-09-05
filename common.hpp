@@ -16,3 +16,5 @@ void remove_token();
 void create_token();
 bool token_exists();
 bool file_exists(const char *filename);
+void wait_for_token(bool exists);
+

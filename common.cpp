@@ -51,3 +51,9 @@ bool file_exists(const char *filename)
 {
 	return (access(filename, F_OK) != -1);
 }
+
+void wait_for_token(bool exists)
+{
+	if (exists) while (!token_exists());
+	else while (token_exists());
+}

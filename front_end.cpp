@@ -5,13 +5,6 @@
 
 using namespace std;
 
-void wait_for_token_disapper()
-{
-	while (token_exists())
-	{
-	}
-}
-
 
 int main()
 {
@@ -25,7 +18,7 @@ int main()
 
 	create_token();
 
-	wait_for_token_disapper();
+	wait_for_token(false);
 
 	std::fstream sorted_file(DATE_EXCHANGE_FILENAME, std::fstream::in);
 	int number;
