@@ -30,7 +30,6 @@ int main()
 	numbers_t numbers;
 	read_numbers(DATE_INPUT_FILENAME, numbers);
 
-
 	output_numbers(DATE_EXCHANGE_FILENAME, numbers);
 
 	create_token();

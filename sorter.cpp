@@ -23,7 +23,6 @@ void do_sort()
 	numbers_t numbers;
 	read_numbers(DATE_EXCHANGE_FILENAME, numbers);
 
-
 	std::sort(numbers.begin(), numbers.end());
 
 	output_numbers(DATE_EXCHANGE_FILENAME, numbers);
