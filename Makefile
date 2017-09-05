@@ -17,5 +17,5 @@ all: target
 # End of rule 'all'
 
 clean: 
-	@rm $(TARGETS)
+	@rm -f $(TARGETS)
 
