@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdio>
+#include <algorithm>
 
 #include "common.hpp"
 
